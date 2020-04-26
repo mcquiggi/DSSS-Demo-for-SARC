@@ -67,13 +67,9 @@ n=0
 for m in messagesCalc:
     ssl=[]
     for i in m:
-        if i == -1:
-            for j in spreadCalc[n]:
-                ssl.append(-j)
-        else:
-            for j in spreadCalc[n]:
-                ssl.append(j)
-
+        for j in spreadCalc[n]:
+            ssl.append(j*i)
+    
     print "Spread message ", n+1, "is:", ssl
     dsss.append(ssl)
     n=n+1
