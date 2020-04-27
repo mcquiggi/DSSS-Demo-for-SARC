@@ -103,7 +103,7 @@ recoveredMessages = []
 for i in raw:
     message = []
     for j in i:
-        if i > 0:
+        if j > 0:
             message.append(1)
         else:
             message.append(0)
@@ -111,7 +111,7 @@ for i in raw:
     
 
 # Display recovered messages:
-print "Recovered messages:", messages
+print "Recovered messages:", recoveredMessages
 
 
 print("\nDone!")
