@@ -2,7 +2,7 @@
 #   Direct Sequence Spread Spectrum Demonstration Program
 #
 #   K. McQuiggin VE7ZD
-#   2020.04.24
+#   2020.04.27
 #**********************************************************************
 
 
@@ -86,9 +86,32 @@ print "\nInterference pattern containing all messages is:", interferencePattern
 #   Now de-spread each message from the overall interference pattern
 #********************************************************************************
 
-# To be written later!
 print "\n\nDe-spreading..."
 
-print "Spreading codes start at:", range(0, np.shape(interferencePattern)[0], np.shape(spread)[0])
+# Recover the raw messages from the interference pattern:
+z=np.reshape(interferencePattern, (np.shape(messages[1])[0], np.shape(spread[1])[0]))
+raw=[]
+for n in range(0, np.shape(messages)[0]):
+    r=[]
+    for i in z:
+        r.append(np.dot(i, spreadCalc[n]))
+    raw.append(r)
+
+print "Raw recovered messages:", raw
+
+recoveredMessages = []
+for i in raw:
+    message = []
+    for j in i:
+        if i > 0:
+            message.append(1)
+        else:
+            message.append(0)
+    recoveredMessages.append(message)
+    
+
+# Display recovered messages:
+print "Recovered messages:", messages
+
 
 print("\nDone!")
